@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Namaa
+namespace Namaa.Configurations
 {
     internal class ConfigurationProvider
     {

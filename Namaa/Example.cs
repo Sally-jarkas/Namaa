@@ -1,21 +1,25 @@
 ﻿
-using OpenQA.Selenium;
+using Namaa.Pages;
 
 namespace Namaa
 {
-    internal class Example:BaseTest
+    internal class Example : BaseTest
     {
+
 
         [Test]
         public void TestNavigation()
         {
-            NavigateTo("https://example.com/");
+            ExamplePage examplePage = new ExamplePage(GetDriver());
+            AboutPage aboutPage = new AboutPage(GetDriver());
+            examplePage.NavigateToExamplePage();
             Assert.That(GetPageTitle(), Is.EqualTo("Example Domain"));
-            GetDriver().FindElement(By.PartialLinkText("More information")).Click();
+            examplePage.GoToMoreInfoPage();
             Assert.That(GetDriver().Url, Is.EqualTo("https://www.iana.org/help/example-domains"));
+
             NavigateTo("https://www.iana.org/about");
             ScrollToTheBottom();
-            GetDriver().FindElement(By.PartialLinkText("Terms of Service")).Click();
+            aboutPage.GoToTerms();
             Assert.That(GetPageTitle().ToLower(), Does.Contain("terms of service"));
         }
     }

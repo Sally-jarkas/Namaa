@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Namaa.Configurations;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -12,7 +13,7 @@ namespace Namaa
     {
         IWebDriver driver;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             TestContext.Progress.WriteLine("Setting Up ....");
@@ -20,7 +21,7 @@ namespace Namaa
             driver.Manage().Window.Maximize();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Teardown()
         {
             driver.Quit();
